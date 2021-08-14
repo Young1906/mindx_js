@@ -12,12 +12,22 @@ console.log('\': \\\' x is escaped ')
 console.log(1,2,3,true,false,true*false);
 
 // [class note]: check if input is a number
-console.log(isNaN(Number(prompt())));
+// console.log(isNaN(Number(prompt())));
 
 // [class note]: prompt;
 // let name = prompt("Your name?:")
 // console.log(name);
 
+// [quiz 01]
+// let n_male = Number(prompt("Numbers of male student(s)"))
+// let n_female = Number(prompt("Numbers of female student(s)"))
+// let r_male = n_male / (n_male + n_female)
+// console.log("% male: " + r_male*100 + "\n% female: " + (1 - r_male)*100);
+
+
+
+
+/* Toy
 const form = document.getElementById("form1")
 form.onsubmit = function(e) {
     draw(),
@@ -104,3 +114,4 @@ function fibs(n) {
     prev.push(new_elem)
     return prev;
 }
+*/
