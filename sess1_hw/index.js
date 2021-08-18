@@ -1,6 +1,31 @@
 /*
 Ex1: 
     1. What are the var and const in Javascript
+    - var is the keyword to declare a variable in javascript
+    - const is the keyword to declare constant, at declaration, a value must be assigned to this constant
+
+    2. var is function-scoped while let is block-scope,
+    which mean:
+    - if a variable is declared by var within a function
+    we can't access that variable out side that function.
+    
+    - block scope mean if a variable declared by let between a pair 
+    of {}, that variable can't be access out side that pair of
+    {}.
+
+    3.
+    - let: value can be updated within its scope.
+    - const: value can't be updated, must be provided 
+    at declaration
+
+Ex2: 
+    Boolean is a datatype descible logical value, which mean
+    it consist of 2 values {true, false}
+
+    what result in boolean:
+    - logical operator over boolean value 
+    - comparison operator 
+
 */
 
 // ex3: 
