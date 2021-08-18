@@ -58,7 +58,14 @@ alert("Square's area: " + a**2);
 
 // e9
 let r = prompt("Radius of the circle: ")
-alert("Circle's area: " + r**2*3.14159265)
+r = Number(r)
+
+if (r) {
+    alert("Circle's area: " + r**2*3.14159265)
+} else 
+{
+    alert("Invalid radius!!!")
+}
 
 // e10:
 let c = prompt("Temperature in Celcius: ")
