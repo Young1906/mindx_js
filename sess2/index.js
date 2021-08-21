@@ -78,7 +78,7 @@ console.log(arr)
 
 {
     let arr2 = ["Batman", "Up", "Attack on titans", "My boss my hero"];
-    for (let i; i < arr.length; i++)
+    for (let i = 0; i < arr.length; i++)
         arr2[i] = arr2[i].toLowerCase()
 
 }
