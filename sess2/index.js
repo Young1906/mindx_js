@@ -8,7 +8,7 @@ console.log(arr)
 
     do {
         i = Number(prompt("Input a number"))
-    } while (isNaN(i) || i >= arr.length);
+    } while (isNaN(i) || i >= arr.length|| i < 0);
     console.log(arr[i]);
     arr[0] = prompt("Input movie name:");
 }
@@ -20,7 +20,7 @@ console.log(arr)
 
     do {
         i = Number(prompt("Input a number"))
-    } while (isNaN(i) || i >= arr.length);
+    } while (isNaN(i) || i >= arr.length || i < 0);
 
     arr[i] = prompt("Input a movie name")
     console.log(arr)
@@ -31,7 +31,7 @@ console.log(arr)
 
     do {
         i = Number(prompt("Input a number"))
-    } while (isNaN(i) || i >= arr.length);
+    } while (isNaN(i) || i >= arr.length|| i < 0);
 
     arr.splice(i, 1);
     console.log(arr)
@@ -42,13 +42,13 @@ console.log(arr)
 
     do {
         i = Number(prompt("Input a number"))
-    } while (isNaN(i) || i >= arr.length);
+    } while (isNaN(i) || i >= arr.length|| i < 0);
 
     // let i, n;
 
     do {
         n = Number(prompt("Input a number"))
-    } while (isNaN(n) || i >= arr.length);
+    } while (isNaN(n) || i >= arr.length|| i < 0);
 
     arr.splice(i, n);
     console.log(arr)
