@@ -148,10 +148,6 @@
     lastMovie.rate += .7
     console.log(lastMovie)
 
-
-
-    
-
 }
 
 {
@@ -169,7 +165,6 @@
     console.log("rate: ", movie.rate)
     console.log("casts: ", movie.characters.join(", "))
 }
-
 
 function f(m){
     console.log("title:", m.title)
