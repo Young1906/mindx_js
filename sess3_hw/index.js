@@ -44,10 +44,11 @@ Homework 3:
 }
 
 {
+    let data=[]
     function crud(){
         // e4
         let actions="c r u d q".split(" ")
-        let data=[]
+        
         //input
         let c;
 
@@ -106,9 +107,9 @@ Homework 3:
                     do {
                         i = Number(prompt("Item to delete"))
                         i--
-                    } while( isNaN(i) || i < 0 || i >= data.length)
+                    } while( isNaN(i) || i < 1 || i > data.length)
         
-                    data.splice(i, 1)
+                    data.splice(i-1, 1)
                     crud()
 
                 }
