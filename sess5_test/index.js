@@ -21,7 +21,7 @@
         if (i === 0 || prv_c === ' ')
             r+=s[i].toUpperCase();
         else
-            r+=s[i];
+            r+=s[i].toLowerCase();
 
         prv_c = s[i];
     }
