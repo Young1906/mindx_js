@@ -95,7 +95,7 @@ E1
         else 
             alert("We could not find your word: "+k)
     }
-    e41(dict);
+    // e41(dict);
 
     // 4.2
     function e42(){
@@ -116,7 +116,203 @@ E1
             
     }
 
-    e42()
+    // e42()
     console.log(dict)
 
+}
+
+{
+    // e5
+    let products = [
+        {
+            _name: 'Xiaomi portable charger 20000mah',
+            brand: 'Xiaomi',
+            price: '428',
+            color: 'white',
+            category: 'charger'
+        },
+
+        {
+            _name: 'VSmart Active 1',
+            brand: 'VSmart',
+            price: '5487',
+            color: 'black',
+            category: 'Phone'
+        }
+    ]
+
+    // e51
+    for (let p of products){
+        console.log("----------------------")
+        for (let k in p){
+            console.log(k, ":", p[k])
+        }
+    }
+
+    // e52
+    for (let p of products){
+        console.log("----------------------")
+        let {_name, price} = p;
+        console.log("Name:", _name)
+        console.log("Price:", price)
+    }
+
+    // e53
+    let cat = prompt("Input cat")
+
+    for (let p of products){
+        console.log("----------------------")
+
+        if (p.category===cat){
+            for (let k in p){
+                console.log(k+":"+p[k])
+            }
+        }
+    }
+
+    // e54
+    for (let p of products){
+        p["provider"] = prompt("Input provider for:"+p._name);
+    }
+
+    
+    let i = 0;
+
+    for (let p of products){
+        for (let k in p){
+            console.log(k+":"+p[k])
+        }
+    }
+
+    
+
+}
+{
+    // e6
+    let tasks = [];
+
+    // main loop
+    // vaid command
+    let commands = ["new", "update", "delete", "complete", "exit"]
+    
+    let exit = 0
+    
+    while (exit!=1){
+        let u_command = prompt("Input command {new, update, delete, complete, exit}")
+
+        while (u_command===undefined || !commands.includes(u_command))
+            u_command = prompt("Input command {new, update, delete, complete, exit}")
+        
+        switch (u_command){
+            case "new": {
+                addNewTask();
+                break;
+            }
+
+            case "update": {
+                updateTask();
+                
+                break;
+            }
+
+            case "complete": {
+                completeTask(tasks)
+                
+                break;
+            }
+
+            case "delete": {
+                deleted = deleteTask();
+                console.log("[deleted]"+deleted);
+                break;
+            }
+
+            case "exit":{
+                exit = 1
+                break;
+            }
+
+
+
+        }
+    }
+
+    function addNewTask(){
+        pretty_print(tasks)
+        task = {
+            _name: prompt("Task: "),
+            complete: false
+        }
+
+        tasks.push(task)
+        pretty_print(tasks)
+    }
+
+    function updateTask(){
+        if (tasks.length === 0)
+        {
+            console.log("Task is empty")
+            return 
+        }
+        pretty_print(tasks)
+        let i = Number(prompt("Task index: "))
+        
+        //input validation
+        while (isNaN(i) || i < 0 || i > tasks.length)
+            i = Number(prompt("Task index: "))
+        
+        let task = tasks[i-1]
+        task._name = prompt("Enter new title")
+        tasks[i-1] = task
+
+        pretty_print(tasks)
+    }
+
+    function completeTask(){
+        if (tasks.length === 0)
+        {
+            console.log("Task is empty")
+            return 
+        }
+            
+        pretty_print(tasks)
+        
+        let i = Number(prompt("Task index: "))
+        while (isNaN(i) || i < 0 || i > tasks.length)
+            i = Number(prompt("Task index: "))
+        
+        task.complete = true
+        pretty_print(tasks)
+
+    }
+
+    function deleteTask(){
+        if (tasks.length === 0)
+        {
+            console.log("Task is empty")
+            return 
+        }
+        pretty_print(tasks)
+        
+        let i = Number(prompt("Task index: "))
+        while (isNaN(i) || i < 0 || i > tasks.length)
+            i = Number(prompt("Task index: "))
+        
+            tasks.splice(i-1, 1)
+        pretty_print(tasks)
+
+    }
+
+
+    function pretty_print(tasks){
+        console.log("-----------------------")
+        let i = 1;
+        for (let task of tasks){
+            let box = "[ ]"
+            if (task.complete)
+                box = "[x]"
+            console.log(i+"."+ box + task._name);
+            i++;
+        }
+    }
 }
