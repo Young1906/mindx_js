@@ -188,6 +188,7 @@
     let u_input = prompt("Input a date (DD/MM/YYYY)")
     
     while (!isValid(u_input)){
+		console.log("Invalid input: " + u_input)
         u_input = prompt("Input a date (DD/MM/YYYY)")
     }
 
@@ -253,6 +254,6 @@
         nextDay = (d+1)+"/"+m+"/"+y
         
 
-    console.log(nextDay)
+    console.log("Input: " + u_input + "; Next day: " + nextDay)
 
 }
