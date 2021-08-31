@@ -192,6 +192,8 @@
         u_input = prompt("Input a date (DD/MM/YYYY)")
     }
 
+	console.log("Valid input:" + u_input);
+
 
     function isValid(s){
         let [d, m, y] = s.split("/")
