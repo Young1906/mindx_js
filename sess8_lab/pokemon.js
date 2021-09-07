@@ -19,6 +19,8 @@ let game = (min_val, max_val, n_pair) => {
     // arr store stage of the card: flip / not flip
     let flipArr = []
     
+    arr = []
+    flipArr = []
     
     for (let i = 0; i < n_pair; i++){
         let n = Math.floor(Math.random() * (max_val - min_val) + min_val)
@@ -37,6 +39,7 @@ let game = (min_val, max_val, n_pair) => {
         // initially all cards are not flipped
         flipArr.push(false)
     }
+    
 
     // event listener
     let firstClick = true
@@ -114,7 +117,8 @@ let game = (min_val, max_val, n_pair) => {
             firstClick = !firstClick
             console.log(n_match, n_pair)
             if (n_match === n_pair){
-                alert("Win!!!")
+                alert("Win!!!");
+                location.reload()
             }
         }
     })
@@ -122,4 +126,4 @@ let game = (min_val, max_val, n_pair) => {
     console.log(arr, flipArr);
 }
 
-game(1, 20, 2);
+game(1, 20, 5);

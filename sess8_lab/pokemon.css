@@ -7,8 +7,14 @@
     justify-content: center;
     display: flex inline;
     font-size: 48;
-    margin: 1%
+    margin: 1%;
+    transition: transform 0.8s;
 }
+
+/* .a_card:hover {
+    transform: rotateX(180deg);
+    
+} */
 
 #cards_container {
     margin:auto
