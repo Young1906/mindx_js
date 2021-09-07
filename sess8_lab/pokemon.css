@@ -1,0 +1,15 @@
+.a_card {
+    background-color: gray;
+    width: 150px;
+    height: 200px;
+    /* align-content: center; */
+    align-items: center;
+    justify-content: center;
+    display: flex inline;
+    font-size: 48;
+    margin: 1%
+}
+
+#cards_container {
+    margin:auto
+}
