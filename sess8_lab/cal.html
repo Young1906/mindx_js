@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet"> 
+        <style> 
+            #cal {
+                height: 50vw;
+                width: 40vw;
+                background: gray;
+                border-radius: 1%;
+                padding: 1%;
+            }
+
+            #cal_screen{
+                height: 20%;
+                border: 2px solid darkgray;
+            }
+
+            #cal_keyboard{
+                align-items: center;
+            }
+
+            .cal_button {
+                margin: 2%;
+                border-radius: 50%;
+                border: 2px solid darkgray;
+                background-color: black;
+                color: white;
+                font-size: 40px;
+                width: 7vw;
+                height: 7vw;
+                align-items: center ;
+                justify-content: center;
+                display: flex inline;
+                font-family: 'Bungee Shade';
+                /* font-family:'Courier New', Courier, monospace */
+            }
+
+            .opsBtn {
+                background-color: orange;    
+                color:black;
+                border: 2px solid black;
+                font-family: 'Bungee Shade';
+                /* font-family:'Courier New', Courier, monospace */
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id=cal>
+            <!-- <div>Calculathor</div> -->
+            <div id="cal_screen"></div>
+            <div id="cal_keyboard"></div> 
+        </div>
+        <script src=cal.js></script>
+    </body>
+</html>
