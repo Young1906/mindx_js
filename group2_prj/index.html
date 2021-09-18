@@ -15,9 +15,9 @@
     <div class=logo>OhMyCat</div>
     
     <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'cat_v_cat')">Cat vs Cat</button>
-        <button class="tablinks" onclick="openCity(event, 'Paris')">Best of Cats</button>
-        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Cat's stuff</button>
+        <button class="tablinks" onclick="openTab(event, 'cat_v_cat')">Cat vs Cat</button>
+        <button class="tablinks" onclick="openTab(event, 'Paris')">Best of Cats</button>
+        <button class="tablinks" onclick="openTab(event, 'Tokyo')">Cat's stuff</button>
     </div>
     
     <div id="cat_v_cat" class="tabcontent">
@@ -36,18 +36,10 @@
     </div>
 
     <!-- load tab content from indiviual html file-->
-    <script> 
-        const loadHTML = (id, fn_name) => {
-            fetch(fn_name)
-                .then(resp => resp.text())
-                .then((resp)=>{
-                    let el = document.getElementById(id);
-                    el.innerHTML = resp;
-                });
-        };
+    <script src="js/loadTab.js"></script> 
 
-        loadHTML("cat_v_cat", "cat_v_cat.html");
-    </script> 
+    <!-- OpenTab function-->
+    <script src="js/openTab.js"></script> 
 
     <!-- main app -->
     <script src=index.js></script>
