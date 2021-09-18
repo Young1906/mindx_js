@@ -16,24 +16,14 @@
     
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'cat_v_cat')">Cat vs Cat</button>
-        <button class="tablinks" onclick="openTab(event, 'Paris')">Best of Cats</button>
-        <button class="tablinks" onclick="openTab(event, 'Tokyo')">Cat's stuff</button>
+        <button class="tablinks" onclick="openTab(event, 'best_of_cat')">Best of Cats</button>
+        <button class="tablinks" onclick="openTab(event, 'cat_stuff')">Cat's stuff</button>
     </div>
     
-    <div id="cat_v_cat" class="tabcontent">
-        <!-- <h3>London</h3>
-        <p>London is the capital city of England.</p> -->
-    </div>
-    
-    <div id="Paris" class="tabcontent">
-        <h3>Paris</h3>
-        <p>Paris is the capital of France.</p> 
-    </div>
-    
-    <div id="Tokyo" class="tabcontent">
-        <h3>Tokyo</h3>
-        <p>Tokyo is the capital of Japan.</p>
-    </div>
+    <!-- default tab, visible -->
+    <div id="cat_v_cat" class="tabcontent" style="display:block"></div> 
+    <div id="best_of_cat" class="tabcontent"></div>
+    <div id="cat_stuff" class="tabcontent"></div>
 
     <!-- load tab content from indiviual html file-->
     <script src="js/loadTab.js"></script> 

@@ -7,4 +7,6 @@ const loadHTML = (id, fn_name) => {
         });
 };
 
-loadHTML("cat_v_cat", "cat_v_cat.html");
+loadHTML("cat_v_cat", "tabs/cat_v_cat.html");
+loadHTML("best_of_cat", "tabs/best_of_cat.html");
+loadHTML("cat_stuff", "tabs/cat_stuff.html");
