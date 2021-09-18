@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purrfect.com</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="index.css">
+    
+    
+</head>
+<body>
+    
+    <div class=logo>OhMyCat</div>
+    
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'cat_v_cat')">Cat vs Cat</button>
+        <button class="tablinks" onclick="openCity(event, 'Paris')">Best of Cats</button>
+        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Cat's stuff</button>
+    </div>
+    
+    <div id="cat_v_cat" class="tabcontent">
+        <!-- <h3>London</h3>
+        <p>London is the capital city of England.</p> -->
+    </div>
+    
+    <div id="Paris" class="tabcontent">
+        <h3>Paris</h3>
+        <p>Paris is the capital of France.</p> 
+    </div>
+    
+    <div id="Tokyo" class="tabcontent">
+        <h3>Tokyo</h3>
+        <p>Tokyo is the capital of Japan.</p>
+    </div>
+
+    <!-- load tab content from indiviual html file-->
+    <script> 
+        const loadHTML = (id, fn_name) => {
+            fetch(fn_name)
+                .then(resp => resp.text())
+                .then((resp)=>{
+                    let el = document.getElementById(id);
+                    el.innerHTML = resp;
+                });
+        };
+
+        loadHTML("cat_v_cat", "cat_v_cat.html");
+    </script> 
+
+    <!-- main app -->
+    <script src=index.js></script>
+    
+    
+    
+</body>
+</html>
