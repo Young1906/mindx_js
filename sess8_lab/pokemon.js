@@ -115,7 +115,7 @@ let game = (min_val, max_val, n_pair) => {
             }
 
             firstClick = !firstClick
-            console.log(n_match, n_pair)
+            // console.log(n_match, n_pair)
             if (n_match === n_pair){
                 alert("Win!!!");
                 location.reload()
@@ -126,4 +126,4 @@ let game = (min_val, max_val, n_pair) => {
     console.log(arr, flipArr);
 }
 
-game(1, 20, 5);
+game(1, 100, 50);
