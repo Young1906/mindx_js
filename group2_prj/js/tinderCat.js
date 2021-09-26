@@ -58,7 +58,7 @@ const toggleExpand = () => {
 
 const handleVote = (e) => {
     // update rating base on thisCat vs prvCat
-    console.log(e.target.id);
+    // console.log(e.target.id);
 
     if (["btn_dislike","btn_like","btn_superlike"].indexOf(e.target))
         {
@@ -93,9 +93,18 @@ const handleVote = (e) => {
 
 
             // update dislike, like, superlike for thisCat
-            thisCat.dislike = thisCat.dislike * 1. + thisCat.votedScore === 0 ? 1 : 0;
-            thisCat.like = thisCat.like * 1. + thisCat.votedScore === 1 ? 1 : 0;
-            thisCat.superlike = thisCat.superlike * 1. + thisCat.votedScore === 2 ? 1 : 0;
+            switch (thisCat.votedScore) {
+                case 0:
+                    thisCat.dislike = thisCat.dislike * 1 + 1;
+                case 1:
+                    thisCat.like = thisCat.like * 1 + 1;
+                case 2:
+                    thisCat.superlike = thisCat.superlike * 1 + 1;
+            }
+
+            // thisCat.dislike = thisCat.dislike * 1. + thisCat.votedScore == 0 ? 1 : 0;
+            // thisCat.like = thisCat.like * 1. + thisCat.votedScore == 1 ? 1 : 0;
+            // thisCat.superlike = thisCat.superlike * 1. + thisCat.votedScore == 2 ? 1 : 0;
 
             let {s, votedScore, id, ...toPut } = thisCat; 
             fetch(URL_DB+"/id/"+thisCat.id, {
