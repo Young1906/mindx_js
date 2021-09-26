@@ -7,17 +7,37 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    
     <!-- css -->
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/card.css">
-	
+    
     
 		
 </head>
 <body>
     <!-- nav bar here, should be on every page -->
-    <div class=nav>
-            HOME | LEADER BOARD | SHOP
+    <div onclick="handleNav(event)">
+        <div class="wrapper" id="nav_wrapper">
+            <nav>
+              <!-- <div></div> -->
+              <ul>
+                <li data-dedata="0px" class="active">
+                    <a href="#" class=navItem>Home</a>
+                </li>
+                <li data-dedata="160px">
+                    <a href="#" class=navItem>Leader Board</a>
+                </li>
+                <li data-dedata="320px">
+                    <a href="#" class=navItem>Shop</a>
+                </li>
+                <li data-dedata="480px">About</li>
+              </ul>
+            </nav>
+          </div>
     </div>
 
     <!-- main app -->
@@ -69,6 +89,7 @@
     <div class=footer></div>
 
     <!-- js file for this page -->
-    <script src="js/tinderCat.js"></script>    
+    <!-- <script src="js/tinderCat.js"></script>     -->
+    <script src="js/nav.js"></script>
 </body>
 </html>
