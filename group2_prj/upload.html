@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purrfect</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    
+    <!-- css -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/upload.css">
+    
+    
+		
+</head>
+<body>
+
+    <!-- nav bar here, should be on every page -->
+    <div onclick="handleNav(event)">
+        <div class="wrapper" id="nav_wrapper">
+            <nav>
+              <!-- <div></div> -->
+              <ul>
+                <li id=nav_index>
+                    <a href="#" class=navItem>Home</a>
+                </li>
+                <li data-dedata="160px">
+                    <a href="#" class=navItem>Leader Board</a>
+                </li>
+                <li data-dedata="320px">
+                    <a href="#" class=navItem>Shop</a>
+                </li>
+                <li id=nav_upload  class="active">
+                    <a href="upload.html" class=navItem>Upload</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+    </div>
+
+    <div id="upload_container">
+        <form>
+            <div class="form-group">
+                <label for="catName">Name</label>
+                <input type="text" class="form-control" id="catName" aria-describedby="name" placeholder="Kitty Lil Paw" required>
+                </div>
+            <div class="form-group">
+                <label for="catDesc">Short Description</label>
+                <textarea class="form-control" id="catDesc" rows="3" required></textarea>
+            
+            </div>
+            <div class="form-group">
+                <label for="catImg">Image</label>
+                <input type="file" class="form-control-file" id="catImg">
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="handleUpload()">Upload</button>
+        </form>
+    </div>
+
+    <script src="js/nav.js"></script>
+    <script src="js/upload.js"></script>
+</body>
+</html>

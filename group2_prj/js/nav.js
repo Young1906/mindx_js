@@ -9,4 +9,17 @@ const handleNav = (e) => {
         else 
         item.setAttribute("class","inactive")
     }
+
+    // console.log(e.target.id)
+    if (e.target.id === "nav_index") {
+        // Simulate an HTTP redirect:
+        window.location.replace("index.html");
+
+    }
+
+    if (e.target.id === "nav_upload") {
+        // Simulate an HTTP redirect:
+        window.location.replace("upload.html");
+
+    }
 }
