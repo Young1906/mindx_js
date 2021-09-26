@@ -1,6 +1,8 @@
 let thisCat = null;
 let prvCat = null;
 
+const URL_DB = "https://sheetdb.io/api/v1/m2e4rmarwbo15";
+
 // main app
 const fetchCat = () => {
     // app mount point
@@ -8,7 +10,7 @@ const fetchCat = () => {
     
     // Fetch db for imgs of cat
     // fetch("https://sheetdb.io/api/v1/ukowxuqoo8uzb")
-    fetch("https://sheetdb.io/api/v1/m2e4rmarwbo15")
+    fetch(URL_DB)
         .then(resp=>resp.json())
 
         // Select a random cat from entire cat list
@@ -16,7 +18,10 @@ const fetchCat = () => {
 
         // create component
         .then(cat=>showCat(cat))
-        .then((cat)=>{thisCat = cat;})
+        .then((cat)=>{
+            thisCat = cat;
+            thisCat.view = thisCat.view*1.0 + 1;
+        })
 }
 
 
@@ -87,12 +92,26 @@ const handleVote = (e) => {
             prvCat.rating = newScore.r_b;
 
 
-            console.log(thisCat, prvCat);
+            // update dislike, like, superlike for thisCat
+            thisCat.dislike = thisCat.dislike * 1. + thisCat.votedScore === 0 ? 1 : 0;
+            thisCat.like = thisCat.like * 1. + thisCat.votedScore === 1 ? 1 : 0;
+            thisCat.superlike = thisCat.superlike * 1. + thisCat.votedScore === 2 ? 1 : 0;
+
+            const {s, votedScore, id, ...toPut } = thisCat; 
+            // console.log(toPut)
+            // Update onto db for this cat
+            fetch(URL_DB+"/id/"+thisCat.id, {
+                method:  "PUT",
+                headers: {
+                    "Content-Type":"application/json"
+                }, 
+                body: JSON.stringify(toPut)
+            }).then((resp)=>console.log(resp.json()))
 
     
             // Fetch next Cat
             prvCat = thisCat
-            // fetchCat()
+            fetchCat()
         }   
 }
 
