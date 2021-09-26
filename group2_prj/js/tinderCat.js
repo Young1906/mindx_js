@@ -97,18 +97,24 @@ const handleVote = (e) => {
             thisCat.like = thisCat.like * 1. + thisCat.votedScore === 1 ? 1 : 0;
             thisCat.superlike = thisCat.superlike * 1. + thisCat.votedScore === 2 ? 1 : 0;
 
-            const {s, votedScore, id, ...toPut } = thisCat; 
-            // console.log(toPut)
-            // Update onto db for this cat
+            let {s, votedScore, id, ...toPut } = thisCat; 
             fetch(URL_DB+"/id/"+thisCat.id, {
                 method:  "PUT",
                 headers: {
                     "Content-Type":"application/json"
                 }, 
                 body: JSON.stringify(toPut)
-            }).then((resp)=>console.log(resp.json()))
+            })
+            
+            let{ _s, _votedScore, _id, ..._toPut } = prvCat
+            fetch(URL_DB+"/id/"+prvCat.id, {
+                method:  "PUT",
+                headers: {
+                    "Content-Type":"application/json"
+                }, 
+                body: JSON.stringify(_toPut)
+            })
 
-    
             // Fetch next Cat
             prvCat = thisCat
             fetchCat()
@@ -128,8 +134,8 @@ const eloScore = (r_a, s_a, r_b, s_b) => {
     let e_b = 1.0 / (1 + Math.pow(10, (r_a - r_b)*1.0/400));
 
     return {
-        r_a: r_a + K*(s_a - e_a),
-        r_b: r_b + K*(s_b - e_b)
+        r_a: Math.floor(r_a + K*(s_a - e_a)),
+        r_b: Math.floor(r_b + K*(s_b - e_b))
     }
 } 
 
