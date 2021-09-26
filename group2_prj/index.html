@@ -5,43 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Purrfect.com</title>
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <!-- css -->
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/card.css">
+	
     
-    
+		
 </head>
 <body>
-    
-    <div class=logobar>
-        <div> <img style="width:40;height:40" src="assets/logo.png"> </div>
-        <!-- <div> <span> ::Cat </span> </div> -->
-        <div> <span> Cart </span></div>
+    <!-- nav bar here, should be on every page -->
+    <div class=nav>
+            HOME | LEADER BOARD | SHOP
     </div>
-    
-    <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'cat_v_cat')">Cat vs Cat</button>
-        <button class="tablinks" onclick="openTab(event, 'best_of_cat')">Best of Cats</button>
-        <button class="tablinks" onclick="openTab(event, 'cat_stuff')">Cat's stuff</button>
-    </div>
-    
-    <!-- default tab, visible -->
-    <div id="cat_v_cat" class="tabcontent" style="display:block"></div> 
-    <div id="best_of_cat" class="tabcontent"></div>
-    <div id="cat_stuff" class="tabcontent"></div>
 
-    <!-- load tab content from indiviual html file-->
-    <script src="js/loadTab.js"></script> 
-
-    <!-- OpenTab function-->
-    <script src="js/openTab.js"></script> 
-    
-    <!-- js mount point -->
-    <div id=jsMountPoint></div>
-    
     <!-- main app -->
-    <script src=index.js></script>
+    <div id=app_container>
+        <div class="card">
+            <!-- Cat Img -->
+            <div class=img_container id=img_container>
+                <img id=cat_img src="">
+            </div>
+            
+            <!-- Button div -->
+            <div class=btn_container onclick="handleVote(event)">
+                <div class="btn dislike" score=0 id=btn_dislike>
+                    <span class="material-icons dislike" score=0 id=btn_dislike>
+                        close
+                    </span>
+                </div>
+                
+                <div class="btn like" score=1 id=btn_like>  
+                    <span class="material-icons" score=1 id=btn_like>
+                        favorite
+                    </span>
+                </div>
+
+                <div class="btn superlike" score=2 id=btn_superlike>
+                    <span class="material-icons superlike" score=2 id=btn_superlike>
+                        star
+                    </span>                        
+                </div>
+            </div>
+            
+            <!-- Decription and rating -->
+            <div class=des_container>
+                <!-- name and rating -->
+                <div class=name_rating>
+                    <span id=cat_name></span>
+                    <span id=cat_rating></span>
+                </div>
+                
+                <!-- description -->
+                <div class=description>
+                    <span id="cat_desc" onclick="toggleExpand()"></span>
+                </div>
+            </div>
+        </div>
+    </div>
     
-    
-    
+    <!-- footer: style to be defined in css/global.css -->
+    <div class=footer></div>
+
+    <!-- js file for this page -->
+    <script src="js/tinderCat.js"></script>    
 </body>
 </html>
