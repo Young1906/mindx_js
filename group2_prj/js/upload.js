@@ -1,27 +1,26 @@
 const handleUpload = async (e) => {
-        
+    
+
     let id_ = uuidv4();
 
 
     const fn = document.getElementById("catImg");
-    var reader = new FileReader();
+    
 
     const fd = new FormData()
     fd.append("file", fn.files[0]);
 
-    fetch("127.0.0.1:8080/assets/imgs", {
+    fetch("http://127.0.0.1:5000/"+id_, {
         method: "POST",
         mode: "no-cors",
         headers: {
-            "Content-Type":"image/*"
+            "content-Type":"image/*"
         },
         body: fd
-    }).then (resp => console.log(resp.text))
+    }).then (resp => console.log(resp.text()))
     .then(success => console.log(success))
+    .then(()=>e.preventDefault())
     .catch(error => console.log(error))
-
-
-    
     
     // Post meta data to googlesheet
     let data = {
