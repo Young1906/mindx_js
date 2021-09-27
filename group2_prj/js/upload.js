@@ -2,6 +2,7 @@ const handleUpload = () => {
     let id_ = uuidv4();
     const fn = document.getElementById("catImg");
 
+    console.log(fn.value)
     // compute fn name to save onto server
     // file extension
     let fn_ext = fn.value.match("\.([a-z]+)$")[0]
@@ -23,6 +24,7 @@ const handleUpload = () => {
     // upload to gsheet
     fetch("https://sheetdb.io/api/v1/m2e4rmarwbo15", {
         method: "POST",
+        mode: "cors",
         headers: {
             "Content-Type":"application/json"
         }, 
