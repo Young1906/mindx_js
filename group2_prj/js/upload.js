@@ -1,20 +1,33 @@
-const handleUpload = (e) => {
-    
-    
+const handleUpload = async (e) => {
+        
     let id_ = uuidv4();
+
+
     const fn = document.getElementById("catImg");
+    var reader = new FileReader();
 
-    // compute fn name to save onto server
-    // file extension
-    let fn_ext = fn.value.match("\.([a-z]+)$")[0]
-    const fn_name = id_+fn_ext;
+    const fd = new FormData()
+    fd.append("file", fn.files[0]);
+
+    fetch("127.0.0.1:8080/assets/imgs", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type":"image/*"
+        },
+        body: fd
+    }).then (resp => console.log(resp.text))
+    .then(success => console.log(success))
+    .catch(error => console.log(error))
+
+
     
-
+    
+    // Post meta data to googlesheet
     let data = {
         id: id_,
         cat_name: document.getElementById("catName").value,
         description: document.getElementById("catDesc").value,
-        img_name: fn_name,
         rating: 1000,
         view: 0,
         like: 0,
@@ -30,20 +43,7 @@ const handleUpload = (e) => {
             "Content-Type":"application/json"
         }, 
         body: JSON.stringify(data)
-    })
-
-    // save file
-    // https://stackoverflow.com/questions/5587973/javascript-upload-file/51109645
-    let photo = fn.files[0];
-    let formData = new FormData();
-
-    formData.append("photo", photo);
-    fetch("/assets/imgs", {
-        method:"POST",
-        body: formData
-    })
-
-    e.preventDefault();
+    })    
 }   
 
 
@@ -53,3 +53,4 @@ function uuidv4() {
       (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
     );
   }
+
