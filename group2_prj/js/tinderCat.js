@@ -59,6 +59,7 @@ const toggleExpand = () => {
 const handleVote = (e) => {
     // update rating base on thisCat vs prvCat
     // console.log(e.target.id);
+    
 
     if (["btn_dislike","btn_like","btn_superlike"].indexOf(e.target))
         {

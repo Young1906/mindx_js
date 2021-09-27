@@ -1,8 +1,9 @@
-const handleUpload = () => {
+const handleUpload = (e) => {
+    
+    
     let id_ = uuidv4();
     const fn = document.getElementById("catImg");
 
-    console.log(fn.value)
     // compute fn name to save onto server
     // file extension
     let fn_ext = fn.value.match("\.([a-z]+)$")[0]
@@ -24,7 +25,7 @@ const handleUpload = () => {
     // upload to gsheet
     fetch("https://sheetdb.io/api/v1/m2e4rmarwbo15", {
         method: "POST",
-        mode: "cors",
+        // mode: "cors",
         headers: {
             "Content-Type":"application/json"
         }, 
@@ -32,8 +33,17 @@ const handleUpload = () => {
     })
 
     // save file
+    // https://stackoverflow.com/questions/5587973/javascript-upload-file/51109645
+    let photo = fn.files[0];
+    let formData = new FormData();
 
-    console.log(data);
+    formData.append("photo", photo);
+    fetch("/assets/imgs", {
+        method:"POST",
+        body: formData
+    })
+
+    e.preventDefault();
 }   
 
 
