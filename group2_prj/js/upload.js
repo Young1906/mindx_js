@@ -1,11 +1,6 @@
 const handleUpload = async (e) => {
-    
-
     let id_ = uuidv4();
-
-
     const fn = document.getElementById("catImg");
-    
 
     const fd = new FormData()
     fd.append("file", fn.files[0]);
@@ -35,6 +30,7 @@ const handleUpload = async (e) => {
     }
 
     // upload to gsheet
+    
     fetch("https://sheetdb.io/api/v1/m2e4rmarwbo15", {
         method: "POST",
         // mode: "cors",
