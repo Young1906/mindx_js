@@ -1,26 +1,23 @@
 const handleUpload = async (e) => {
+    e.preventDefault();
+
     let id_ = uuidv4();
     const fn = document.getElementById("catImg");
+    
+
+    // file ext
+    let ext = fn.value.split(".")
+    ext = ext[ext.length - 1];
 
     const fd = new FormData()
     fd.append("file", fn.files[0]);
 
-    fetch("http://127.0.0.1:5000/"+id_, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-            "content-Type":"image/*"
-        },
-        body: fd
-    }).then (resp => console.log(resp.text()))
-    .then(success => console.log(success))
-    .then(()=>e.preventDefault())
-    .catch(error => console.log(error))
-    
+
     // Post meta data to googlesheet
     let data = {
         id: id_,
         cat_name: document.getElementById("catName").value,
+        img_name: id_+"."+ext,
         description: document.getElementById("catDesc").value,
         rating: 1000,
         view: 0,
@@ -29,16 +26,37 @@ const handleUpload = async (e) => {
         superlike: 0  
     }
 
-    // upload to gsheet
-    
-    fetch("https://sheetdb.io/api/v1/m2e4rmarwbo15", {
+    console.log(data)
+
+    // console.log(data);
+
+    // // upload to gsheet
+    const result = fetch("https://sheetdb.io/api/v1/m2e4rmarwbo15", {
         method: "POST",
         // mode: "cors",
         headers: {
-            "Content-Type":"application/json"
+            "Content-type":"application/json"
         }, 
         body: JSON.stringify(data)
-    })    
+    })
+    .then(resp => console.log(resp.text()))
+    .then(success => console.log(success))
+    .catch(error => console.log(error))
+    
+    // // Upload file
+    result.then(
+        fetch("http://127.0.0.1:5000/?fn="+id_, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "content-type":"image/*"
+            },
+            body: fd
+        }).then (resp => console.log(resp.text()))
+        .then(success => console.log(success))
+        .catch(error => console.log(error))
+    )
+
 }   
 
 

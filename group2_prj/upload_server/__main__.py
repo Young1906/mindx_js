@@ -12,16 +12,17 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/<string:file_name>', methods=['POST'])
-def upload_file(file_name):
+@app.route('/', methods=['POST'])
+def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
+            
         file = request.files['file']
-        
         fn_ext = file.filename.split(".")[-1]
+        file_name = request.args.get("fn")
         # rename the file 
         file.filename = f"{file_name}.{fn_ext}"
         
@@ -46,4 +47,5 @@ def upload_file(file_name):
 
 
 if __name__ == "__main__":
+    app.secret_key = "This is a key"
     app.run(host="127.0.0.1",port=5000,debug=True)
