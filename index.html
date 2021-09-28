@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purrfect.com</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="index.css">
+    
+    
+</head>
+<body>
+    
+    <div class=logobar>
+        <div> <img style="width:40;height:40" src="assets/logo.png"> </div>
+        <!-- <div> <span> ::Cat </span> </div> -->
+        <div> <span> Cart </span></div>
+    </div>
+    
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'cat_v_cat')">Cat vs Cat</button>
+        <button class="tablinks" onclick="openTab(event, 'best_of_cat')">Best of Cats</button>
+        <button class="tablinks" onclick="openTab(event, 'cat_stuff')">Cat's stuff</button>
+    </div>
+    
+    <!-- default tab, visible -->
+    <div id="cat_v_cat" class="tabcontent" style="display:block"></div> 
+    <div id="best_of_cat" class="tabcontent"></div>
+    <div id="cat_stuff" class="tabcontent"></div>
+
+    <!-- load tab content from indiviual html file-->
+    <script src="js/loadTab.js"></script> 
+
+    <!-- OpenTab function-->
+    <script src="js/openTab.js"></script> 
+
+    <!-- main app -->
+    <script src=index.js></script>
+    
+    
+    
+</body>
+</html>
