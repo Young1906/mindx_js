@@ -48,7 +48,7 @@ const makeCard = (cat) => {
     card.id = cat.id
 
     let img = card.getElementsByClassName("cat_image")[0];
-    img.setAttribute("src", cat.img_path)
+    img.setAttribute("src", cat.img_name)
 
     let catName = card.getElementsByClassName("cat_name")[0];
     catName.innerText = cat.cat_name;
@@ -60,27 +60,50 @@ const makeCard = (cat) => {
     catDesc.innerText = cat.description.length < 90 ? cat.description : cat.description.substring(0, 90) + '...';
     des = cat.description;
 
-
-
-    // const eventVote = new Event("vote")
-    const voteEvent = new CustomEvent("vote", {bubbles: true, detail: {target: card}})
-
     card.addEventListener("click", (e)=>{
         const target = e.target;
 
         if (target.classList.contains("dislike")){
             card.classList.add("left");
+            // analytic event
+            fetch("/cat/dislike/"+cat.id, {method:"POST"})
+                // .then(resp=>console.log(resp.json()))
+                // .catch(err=>console.error(err))
+
             // const eventDislike = new CustomEvent("vote", {"target_id": card});
+            // const eventVote = new Event("vote")
+            let voteEvent = new CustomEvent("vote", {
+                bubbles: true,
+                detail: {target: card, score:0}
+            })
             card.dispatchEvent(voteEvent)
         }
 
         if (target.classList.contains("like")){
             card.classList.add("right");
+            // analytic event
+            fetch("/cat/like/"+cat.id, {method:"POST"})
+                // .then(resp=>console.log(resp.json()))
+                // .catch(err=>console.error(err))
+
+            let voteEvent = new CustomEvent("vote", {
+                bubbles: true,
+                detail: {target: card, score:1}
+            })
             card.dispatchEvent(voteEvent)
         }
 
         if (target.classList.contains("superlike")){
             card.classList.add("up");
+            // analytic event
+            fetch("/cat/superlike/"+cat.id, {method:"POST"})
+                // .then(resp=>console.log(resp.json()))
+                // .catch(err=>console.error(err))
+
+            let voteEvent = new CustomEvent("vote", {
+                bubbles: true,
+                detail: {target: card, score:2}
+            })
             card.dispatchEvent(voteEvent)
         }
 
@@ -94,6 +117,12 @@ const makeCard = (cat) => {
                 img_ctn.classList.add("minimized")
             }
         }
+
+        // analytic event
+        fetch("/cat/view/"+cat.id, {method:"POST"})
+            // .then(resp=>console.log(resp.json()))
+            // .catch(err=>console.error(err))
+
     })
     return card;
 };

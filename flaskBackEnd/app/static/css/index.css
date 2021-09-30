@@ -3,4 +3,5 @@ body {
     height: 100%;
     background: #fd746c;
     background: linear-gradient(to left, #fd746c , #ff9068);
+    overflow: hidden; 
 }

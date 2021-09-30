@@ -1,0 +1,9 @@
+.upload_container {
+    display: flex;
+    width: 80%;
+    max-width: 800px;
+    background-color: white;
+    margin:auto;
+    padding: 20px;
+    border-radius: 10px;
+}

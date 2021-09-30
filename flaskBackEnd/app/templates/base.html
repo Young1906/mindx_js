@@ -7,7 +7,7 @@
 	<script type="text/javascript" src="/static/js/nav.js">
 
 	</script>
-	<title>{% block title %}{% endblock %} - My Webpage</title>
+	<title>{% block title %}{% endblock %} - Kinder</title>
 	{% endblock %}
   </head>
   <body>
@@ -18,7 +18,7 @@
 			  <!-- <div></div> -->
 			  <ul>
 				<li id=nav_index class="active">
-					<a href="#" class=navItem>Home</a>
+					<a href="{{url_for('index')}}" class=navItem>Home</a>
 				</li>
 				<li data-dedata="160px">
 					<a href="#" class=navItem>Leader Board</a>
@@ -27,7 +27,7 @@
 					<a href="#" class=navItem>Shop</a>
 				</li>
 				<li id=nav_upload>
-					<a href="#" class=navItem>Upload</a>
+					<a href="{{ url_for('upload.f_upload') }}" class=navItem>Upload</a>
 				</li>
 			  </ul>
 			</nav>

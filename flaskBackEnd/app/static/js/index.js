@@ -1,61 +1,63 @@
 const container = document.getElementById("card_container");
+let prvCat = null
+let thisCat = null
+
+const fetch_batch = async ()=>{
+
+    let data = await fetch("/cat").then(
+        resp => resp.json()
+    )
+    // Todo: shuffle array
+
+    // Push arr Elem into card container
+    while (data.length > 0){
+        let cat = data.pop()
+        let htmlCard = makeCard(cat)
+        container.appendChild(htmlCard)
+    }
+}
+
+setInterval(()=>{
+    if (container.childNodes.length===0){
+        fetch_batch()
+    }
+}, 500)
 
 // Remove the card when vote event happend
 container.addEventListener("vote", (e)=>{
     // console.log(e)
     setTimeout(
         ()=>{
-            console.log("remove element" + e.detail.target);
             container.removeChild(e.detail.target);
         },
         1000
     )
+    thisCat = e.detail
 
-})
+    if (prvCat) {
+        // console.log(thisCat, prvCat)
+        let data = {
+            prvCat: {
+                id : prvCat.target.id,
+                score: prvCat.score
+            },
 
-const fetch_batch = () => {
-    let data = [
-        {
-            id:1,
-            cat_name:"Catty Mc Flatface",
-            description:"Very Catty",
-            rating: 1000,
-            img_path: "/static/imgs/img.jpeg"
-        },
-
-        {
-            id:2,
-            cat_name:"Catty Mc Flatface",
-            description:"Very Catty",
-            rating: 1000,
-            img_path: "/static/imgs/img.jpeg"
-        },
-
-        {
-            id:3,
-            cat_name:"Catty Mc Flatface",
-            description:"Very Catty",
-            rating: 1000,
-            img_path: "/static/imgs/img.jpeg"
+            thisCat: {
+                id : thisCat.target.id,
+                score: thisCat.score
+            }
         }
 
-    ]
-
-    let i = 0;
-
-    while (data.length > 0){
-        let cat = data.pop()
-        let htmlCard = makeCard(cat)
-        htmlCard.setAttribute("style","z-index:"+i)
-        container.appendChild(htmlCard)
-        i++;
+        fetch("/cat/elo", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(data)
+        }).then(resp=>console.log(resp.text()))
     }
 
-    // when container out of card, fetch new
-}
+    // update prvCat
+    prvCat = thisCat
 
 
-setInterval(()=>{
-    if (container.childNodes.length===0)
-        fetch_batch()
-}, 1000)
+
+})
