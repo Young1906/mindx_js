@@ -1,27 +1,33 @@
 let thisCat = null;
 let prvCat = null;
 
-const URL_DB = "https://sheetdb.io/api/v1/m2e4rmarwbo15";
+const URL_DB = "http://localhost:5000/cat";
 
 // main app
-const fetchCat = () => {
+const fetchCat = async () => {
     // app mount point
     let container = document.getElementById("app_container");
     
     // Fetch db for imgs of cat
     // fetch("https://sheetdb.io/api/v1/ukowxuqoo8uzb")
-    fetch(URL_DB)
-        .then(resp=>resp.json())
+    fetch(
+            URL_DB,
+            {
+                method:"GET",
+                mode:"no-cors",
+                headers:{"Content-Type": "application/json"}
+            })
+        .then(resp=>console.log(resp.json()))
 
-        // Select a random cat from entire cat list
-        .then(cats=> { return cats[Math.floor(Math.random() * cats.length)]})
+        // // Select a random cat from entire cat list
+        // .then(cats=> { return cats[Math.floor(Math.random() * cats.length)]})
 
-        // create component
-        .then(cat=>showCat(cat))
-        .then((cat)=>{
-            thisCat = cat;
-            thisCat.view = thisCat.view*1.0 + 1;
-        })
+        // // create component
+        // .then(cat=>showCat(cat))
+        // .then((cat)=>{
+        //     thisCat = cat;
+        //     thisCat.view = thisCat.view*1.0 + 1;
+        // })
 }
 
 
@@ -152,3 +158,67 @@ const eloScore = (r_a, s_a, r_b, s_b) => {
 
 // Load the first cat
 fetchCat()
+
+
+const makeCard = (cat) => {
+    let rootDiv = document.createElement("div");
+    rootDiv.setAttribute("class", card);
+
+    rootDiv.innerHTML = `
+    <!-- Cat Img -->
+    <div class=img_container id=img_container>
+        <img id=cat_img src="">
+    </div>
+    
+    <!-- Button div -->
+    <div class=btn_container onclick="handleVote(event)">
+        <div class="btn dislike" score=0 id=btn_dislike>
+            <span class="material-icons dislike" score=0 id=btn_dislike>
+                close
+            </span>
+        </div>
+        
+        <div class="btn like" score=1 id=btn_like>  
+            <span class="material-icons" score=1 id=btn_like>
+                favorite
+            </span>
+        </div>
+
+        <div class="btn superlike" score=2 id=btn_superlike>
+            <span class="material-icons superlike" score=2 id=btn_superlike>
+                star
+            </span>                        
+        </div>
+    </div>
+    
+    <!-- Decription and rating -->
+    <div class=des_container>
+        <!-- name and rating -->
+        <div class=name_rating>
+            <span id=cat_name></span>
+            <span id=cat_rating></span>
+        </div>
+        
+        <!-- description -->
+        <div class=description>
+            <span id="cat_desc" onclick="toggleExpand()"></span>
+        </div>
+    </div>
+    `
+
+    let img = rootDiv.getElementById("cat_img");
+    img.setAttribute("src", "assets/imgs/"+cat.img_name)
+    
+    let catName = rootDiv.getElementById("cat_name");
+    catName.innerText = cat.cat_name;
+        
+    let rating = rootDiv.getElementById("cat_rating");
+    rating.innerText = cat.rating;
+
+    let catDesc = rootDiv.getElementById("cat_desc");
+    catDesc.innerText = cat.description.length < 90 ? cat.description : cat.description.substring(0, 90) + '...';
+    des = cat.description;
+
+    return rootDiv;
+
+}

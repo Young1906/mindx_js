@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %} Top Cats {% endblock %}
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="/static/css/best_of_cat.css">
+{% endblock %}
+
+{% block content %}
+    <div id=wrapper>
+        <div class="chart-container" style="position: relative; height:100%; width:100%">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="/static/js/best_of_cats.js"></script>
+{% endblock %}

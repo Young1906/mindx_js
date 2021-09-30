@@ -23,6 +23,10 @@ def create_app():
     def index():
         return render_template("index.html")
 
+    @app.route("/top", methods=["GET"])
+    def topCat():
+        return render_template("best_of_cat.html")
+    
     from .bluePrints.api import getCat as getCat_bp
     app.register_blueprint(getCat_bp, url_prefix="/cat")
 
