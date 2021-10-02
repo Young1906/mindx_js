@@ -27,6 +27,10 @@ def create_app():
     def topCat():
         return render_template("best_of_cat.html")
     
+    @app.route("/shop", methods=["GET"])
+    def shop():
+        return render_template("shop.html")
+
     from .bluePrints.api import getCat as getCat_bp
     app.register_blueprint(getCat_bp, url_prefix="/cat")
 
